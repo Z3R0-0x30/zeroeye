@@ -19,7 +19,7 @@ It continuously scans newly published public pastes and flags suspicious content
   - Data leaks & credential dumps
 - 🔗 **Automatic URL extraction**
 - 📝 **Persistent logging**
-  - `threat_logs.txt` – detected malicious content
+  - `threat_logs.txt` – detected threat content
   - `links.txt` – extracted URLs / IOCs
 - 🎭 **User-Agent randomization** to reduce blocking
 - 🧠 Simple, readable Python code (easy to extend)
@@ -43,7 +43,52 @@ It continuously scans newly published public pastes and flags suspicious content
 - Python **3.8+**
 - Internet connection
 
-### Python dependencies
+### Python Dependencies
+
+Install required modules:
 
 ```bash
 pip install requests beautifulsoup4
+```
+
+## ▶️ Usage
+
+```bash
+python zeroeye.py
+```
+You’ll see an interactive menu:
+```bash
+1. Pastebin
+2. Clear logs
+3. Help
+0. Exit
+```
+**Start Live Monitoring**
+Choose option **1** to begin real-time Pastebin scanning.
+
+---
+
+## 📂 Output Files
+
+File	          Description
+threat_logs.txt	Logged threat content with timestamps
+links.txt	      Extracted URLs / indicators of compromise
+
+---
+
+## ⚠️ Disclaimer
+This tool is intended for educational and defensive security research only.
+- Do NOT use this tool for illegal activity
+- Do NOT scrape aggressively or bypass platform protections
+- The author is not responsible for misuse
+Always comply with Pastebin’s Terms of Service and applicable laws.
+
+---
+
+## 🧩 Future Improvements
+- Persistent state across restarts
+- Threat scoring and confidence levels
+- Regex-based detection
+- IOC export (JSON / CSV / STIX)
+- Multi-platform monitoring (GitHub Gists, Telegram, etc.)
+- Async or threaded scanning
