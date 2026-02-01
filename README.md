@@ -7,6 +7,15 @@ It continuously scans newly published public content and flags suspicious indica
 
 ---
 
+## 🏞 Image
+Running a live gist monitoring:
+<img width="1027" height="843" alt="image" src="https://github.com/user-attachments/assets/a38d6438-8d6a-4d45-9bb7-ae3af2362f67" />
+
+Running a live pastebin monitoring:
+<img width="1056" height="867" alt="image" src="https://github.com/user-attachments/assets/951a1419-b018-4fba-8448-23b343c38200" />
+
+---
+
 ## 🚀 Features
 
 ### 🔴 Live Platform Monitoring
