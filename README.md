@@ -91,11 +91,10 @@ You will see an interactive menu
 ---
 
 ## 📂 Output Files
-File                |     Description
-threat_logs.txt	          Detected Pastebin threat content
-links.txt	                Extracted URLs / IOCs from Pastebin
-git_threat_logs.txt	      Detected GitHub Gist threat content
-git_links.txt             Extracted URLs / IOCs from Gists
+- `threat_logs.txt` - Detected Pastebin threat content
+- `links.txt` - Extracted URLs / IOCs from Pastebin
+- `git_threat_logs.txt` - Detected GitHub Gist threat content
+- `git_links.txt` - Extracted URLs / IOCs from Gists
 
 ---
 
