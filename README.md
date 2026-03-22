@@ -67,7 +67,7 @@ It leverages a combination of **pattern-based detection, heuristic analysis, and
 ```bash
 git clone https://github.com/Z3R0space/zeroeye.git
 cd zeroeye
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ---
@@ -75,13 +75,7 @@ pip install -r requirements.txt
 ## ▶️ Usage
 
 ```bash
-python zeroeye.py
-```
-
-### Optional Arguments
-
-```bash
-python zeroeye.py --source pastebin --output results.json
+python3 zeroeye.py
 ```
 
 ---
@@ -90,20 +84,6 @@ python zeroeye.py --source pastebin --output results.json
 
 ```
 zeroeye/
-│── core/
-│   ├── scraper.py
-│   ├── parser.py
-│   └── analyzer.py
-│
-│── detectors/
-│   ├── credentials.py
-│   ├── phishing.py
-│   └── patterns.py
-│
-│── utils/
-│   ├── logger.py
-│   └── config.py
-│
 │── zeroeye.py
 │── requirements.txt
 │── README.md
@@ -115,11 +95,26 @@ zeroeye/
 
 ```json
 {
-  "type": "credential_leak",
-  "email": "user@example.com",
-  "password": "P@ssw0rd123",
-  "source": "pastebin",
-  "timestamp": "2026-03-21T14:32:10Z"
+  "timestamp": "2026-03-20 11:58:21.405639",
+  "platform": "gist_comment",
+  "url": "https://gist.github.com/<git-id>/<gist-id>",
+  "domains": [],
+  "campaign_id": null,
+  "context": "unknown",
+  "language": "unknown",
+  "severity": "CRITICAL",
+  "score": 13,
+  "findings": [
+    [
+      "EMAIL_PASSWORD",
+      "[email]: <password>"
+    ],
+    [
+      "PASSWORD_ASSIGN",
+      "password"
+    ]
+  ],
+  "iocs": [URLs, IPs, APIs]
 }
 ```
 
@@ -152,23 +147,6 @@ This tool is intended for **educational and defensive cybersecurity purposes onl
 * [ ] Dashboard UI
 * [ ] Multi-source ingestion (GitHub, forums, dark web)
 * [ ] IOC enrichment (VirusTotal, AbuseIPDB)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-```bash
-# Fork the repo
-# Create a new branch
-git checkout -b feature/your-feature
-
-# Commit changes
-git commit -m "Add feature"
-
-# Push and open PR
-```
 
 ---
 
