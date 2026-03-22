@@ -1,116 +1,190 @@
-# ZeroEye 👁️  
-**Live Pastebin & GitHub Gist Cyber Threat Monitoring Tool**
+# 👁️ ZeroEye
 
-ZeroEye is a lightweight threat-hunting utility designed to monitor **Pastebin and GitHub Gists in near real time** and detect potential **cyber threats** such as phishing campaigns, malware lures, crypto scams, and leaked data.
-
-It continuously scans newly published public content and flags suspicious indicators using keyword-based detection — helping security researchers and blue teams stay ahead of emerging threats.
+### Large-Scale OSINT Monitoring for Credential Leaks & Phishing Detection
 
 ---
 
-## 🏞 Image
-Running a live gist monitoring:
-<img width="1027" height="843" alt="image" src="https://github.com/user-attachments/assets/a38d6438-8d6a-4d45-9bb7-ae3af2362f67" />
+## 🚀 Overview
 
-Running a live pastebin monitoring:
-<img width="1056" height="867" alt="image" src="https://github.com/user-attachments/assets/951a1419-b018-4fba-8448-23b343c38200" />
+**ZeroEye** is an automated threat intelligence tool designed to monitor public paste platforms (e.g., Pastebin) for **credential leaks, phishing indicators, and adversarial infrastructure signals** in real time.
 
----
-
-## 🚀 Features
-
-### 🔴 Live Platform Monitoring
-- **Pastebin** – Continuous polling of the public archive
-- **GitHub Gists** – Continuous monitoring of newly created public gists
-- ⏹️ Graceful stop with **Ctrl+C**
-- 🔁 **No duplicate scanning** (already-seen items are skipped)
-
-### 🕵️ Threat Detection Categories
-- Phishing & social engineering
-- Crypto scams & fake giveaways
-- Malware lures & cracked software
-- Data leaks & credential dumps
-
-### 🔍 Analysis & Logging
-- 🔗 Automatic **URL / IOC extraction**
-- 📝 Persistent logging
-  - `threat_logs.txt` – Pastebin detections
-  - `links.txt` – Pastebin extracted URLs
-  - `git_threat_logs.txt` – GitHub Gist detections
-  - `git_links.txt` – Gist extracted URLs
-- 🎭 **User-Agent randomization** to reduce blocking
-- 🧠 Simple, readable Python code (easy to extend)
+It leverages a combination of **pattern-based detection, heuristic analysis, and OSINT techniques** to identify sensitive data exposure and malicious activity at scale.
 
 ---
 
-## 📌 How It Works
+## ⚡ Features
 
-### Pastebin Flow
-1. Fetches the Pastebin **public archive**
-2. Extracts paste IDs
-3. Filters out previously processed pastes
-4. Fetches raw paste content
-5. Scans content against multiple threat wordlists
-6. Logs and prints alerts when matches are found
-7. Repeats continuously
+* 🔍 **Real-time Paste Monitoring**
 
-### GitHub Gist Flow
-1. Fetches the **public Gist feed**
-2. Extracts newly published gist URLs
-3. Filters out previously processed gists
-4. Fetches raw gist content
-5. Scans content against the same threat wordlists
-6. Logs and prints alerts when matches are found
-7. Repeats continuously
+  * Continuously scrapes public paste platforms
+
+* 🔐 **Credential Leak Detection**
+
+  * Detects exposed:
+
+    * Emails / usernames
+    * Passwords
+    * API keys / tokens
+
+* 🎣 **Phishing Indicator Detection**
+
+  * Identifies:
+
+    * Suspicious URLs
+    * Fake login pages
+    * Credential harvesting patterns
+
+* 🧠 **Heuristic + Pattern Matching Engine**
+
+  * Regex-based + contextual detection
+
+* 🌐 **Adversarial Infrastructure Analysis**
+
+  * Extracts domains, IPs, and endpoints used by attackers
+
+* 📊 **Structured Output**
+
+  * JSON / logs for further analysis
+
+* ⚙️ **Modular Design**
+
+  * Easily extend detection modules
 
 ---
 
-## 🛠️ Requirements
+## 🛠️ Tech Stack
 
-- Python **3.8+**
-- Internet connection
+* **Python 3**
+* `requests` / `aiohttp`
+* `BeautifulSoup4`
+* Regex engine
+* Optional: threat intel APIs
 
-### Python Dependencies
+---
 
-Install required modules:
+## 📦 Installation
 
 ```bash
-pip install requests beautifulsoup4
+git clone https://github.com/Z3R0space/zeroeye.git
+cd zeroeye
+pip install -r requirements.txt
 ```
 
 ---
 
 ## ▶️ Usage
-Run the tool:
+
 ```bash
-python3 zeroeye.py
-```
-You will see an interactive menu
-```
-0. Exit
-1. Pastebin
-2. Gist
-3. Clear logs
-4. Help
+python zeroeye.py
 ```
 
-### Live monitoring options
-- **Option 1:** Live Pastebin monitoring
-- **Option 2:** Live Github Gist monitoring
+### Optional Arguments
+
+```bash
+python zeroeye.py --source pastebin --output results.json
+```
 
 ---
 
-## 📂 Output Files
-- `threat_logs.txt` - Detected Pastebin threat content
-- `links.txt` - Extracted URLs / IOCs from Pastebin
-- `git_threat_logs.txt` - Detected GitHub Gist threat content
-- `git_links.txt` - Extracted URLs / IOCs from Gists
+## 📁 Project Structure
+
+```
+zeroeye/
+│── core/
+│   ├── scraper.py
+│   ├── parser.py
+│   └── analyzer.py
+│
+│── detectors/
+│   ├── credentials.py
+│   ├── phishing.py
+│   └── patterns.py
+│
+│── utils/
+│   ├── logger.py
+│   └── config.py
+│
+│── zeroeye.py
+│── requirements.txt
+│── README.md
+```
+
+---
+
+## 🧪 Example Output
+
+```json
+{
+  "type": "credential_leak",
+  "email": "user@example.com",
+  "password": "P@ssw0rd123",
+  "source": "pastebin",
+  "timestamp": "2026-03-21T14:32:10Z"
+}
+```
 
 ---
 
 ## ⚠️ Disclaimer
-This tool is intended for educational and defensive security research only.
-- ❌ Do NOT use this tool for illegal activity
-- ❌ Do NOT scrape aggressively or bypass platform protections
-- ⚠️ GitHub and Pastebin enforce rate limits
-The author is not responsible for misuse.
-Always comply with platform Terms of Service and applicable laws.
+
+This tool is intended for **educational and defensive cybersecurity purposes only**.
+
+* Do NOT use ZeroEye for unauthorized monitoring or data collection
+* Respect platform terms of service
+* Use responsibly in accordance with applicable laws
+
+---
+
+## 🧠 Use Cases
+
+* Threat intelligence gathering
+* SOC monitoring
+* Red team reconnaissance
+* Security research
+* Credential exposure tracking
+
+---
+
+## 🗺️ Roadmap
+
+* [ ] Machine Learning-based classification
+* [ ] Telegram / Discord alerts
+* [ ] Dashboard UI
+* [ ] Multi-source ingestion (GitHub, forums, dark web)
+* [ ] IOC enrichment (VirusTotal, AbuseIPDB)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+```bash
+# Fork the repo
+# Create a new branch
+git checkout -b feature/your-feature
+
+# Commit changes
+git commit -m "Add feature"
+
+# Push and open PR
+```
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## 👤 Author
+
+**Prince A. Patel**
+Cybersecurity Researcher | OSINT | Exploit Development
+
+---
+
+## ⭐ Support
+
+If you find this project useful, consider giving it a ⭐ on GitHub!
